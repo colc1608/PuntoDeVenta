@@ -39,7 +39,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AreaInterfaz.cs" />
+    <Compile Include="BoletaDetalleInterfaz.cs" />
+    <Compile Include="BoletaInterfaz.cs" />
+    <Compile Include="CategoriaInterfaz.cs" />
+    <Compile Include="EmpleadoInterfaz.cs" />
+    <Compile Include="FacturaDetalleInterfaz.cs" />
+    <Compile Include="FacturaInterfaz.cs" />
+    <Compile Include="JuridicoInterfaz.cs" />
+    <Compile Include="MarcaInterfaz.cs" />
+    <Compile Include="NaturalInterfaz.cs" />
+    <Compile Include="PersonaInterfaz.cs" />
+    <Compile Include="ProductoInterfaz.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubCategoriaInterfaz.cs" />
+    <Compile Include="UnidadDeMedidaInterfaz.cs" />
     <Compile Include="UsuarioInterfaz.cs" />
   </ItemGroup>
   <ItemGroup>
