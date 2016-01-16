@@ -16,5 +16,18 @@ namespace presentacion
         {
             InitializeComponent();
         }
+
+        private void cerrarVentana(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void MenuItemArea_Click(object sender, EventArgs e)
+        {
+            Admi_buscarArea frm = new Admi_buscarArea();
+            frm.Show();
+        }
+
+        
     }
 }

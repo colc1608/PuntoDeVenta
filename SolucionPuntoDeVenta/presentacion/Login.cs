@@ -18,10 +18,11 @@ namespace presentacion
     {
         //variables globales
         private UsuarioServicio servicio = new UsuarioServicio();
-
+        
         public Login()
         {
             InitializeComponent();
+            
         }
 
         private void btnEntrar_Click(object sender, EventArgs e)
