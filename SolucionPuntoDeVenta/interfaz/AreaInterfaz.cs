@@ -10,10 +10,10 @@ namespace interfaz
 {
     public interface AreaInterfaz
     {
-        bool registrarArea(Area area);
-        bool actualizarArea(Area area);
-        bool eliminarArea(Area area);
-        List<Area> listaDeAreas();
-        List<Area> buscarArea(string cadena);
+        bool registrar(Area area);
+        bool actualizar(Area area);
+        bool eliminar(Area area);
+        List<Area> listarTodo();
+        List<Area> buscar(string cadena);
     }
 }

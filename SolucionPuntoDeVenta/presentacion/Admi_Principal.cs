@@ -28,6 +28,12 @@ namespace presentacion
             frm.Show();
         }
 
+        private void MenuItemCategoria_Click(object sender, EventArgs e)
+        {
+            Admi_buscarCategoria frm = new Admi_buscarCategoria();
+            frm.Show();
+        }
+
         
     }
 }

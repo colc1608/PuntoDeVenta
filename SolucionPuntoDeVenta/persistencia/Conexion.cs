@@ -25,7 +25,7 @@ namespace persistencia
                 //con.ConnectionString = "Data Source=ppi7dowad9.database.windows.net;Initial Catalog=prodent;Integrated Security=false;User ID=clopezc;Password=123456a+;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False";
                 con.ConnectionString = "Data Source=" + servidor + "; Initial Catalog=" + bd + ";  Integrated Security=true; User ID="+usuario+";  Password="+clave+" ";
                 con.Open();
-                System.Console.WriteLine("conexion establecida satisfactoriamente");
+                
             }
             catch (Exception err)
             {

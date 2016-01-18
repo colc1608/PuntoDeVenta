@@ -7,26 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//importar librerias
+//importar
 using servicio;
 using dominio;
 
 namespace presentacion
 {
-    public partial class Admi_buscarArea : Form
+    public partial class Admi_buscarCategoria : Form
     {
-        private AreaServicio servicio = new AreaServicio();
-        private List<Area> listaDeAreas = new List<Area>();
-        private Area areaSeleccionada = new Area();
+        private CategoriaServicio servicio = new CategoriaServicio();
+        private List<Categoria> listaDeCategorias;
+        private Categoria categoriaSeleccionada = new Categoria();
 
-
-        public Admi_buscarArea()
+        public Admi_buscarCategoria()
         {
             InitializeComponent();
-            listarAreas();
-            activaBotones(true,true,false, false);
+            listarCategorias();
+            activaBotones(true, true, false, false);
         }
-
         private void activaBotones(bool a, bool b, bool c, bool d)
         {
             btnBuscar.Enabled = a;
@@ -37,22 +35,22 @@ namespace presentacion
         }
 
 
-        private void listarAreas()
+        private void listarCategorias()
         {
             try
             {
-                listaDeAreas = servicio.listarAreas();
+                listaDeCategorias = servicio.listarTodo();
                 dataAreas.Rows.Clear();
-                foreach (Area area in listaDeAreas)
+                foreach (Categoria categoria in listaDeCategorias)
                 {
-                    Object[] fila = { area.Descripcion };
+                    Object[] fila = { categoria.Descripcion };
                     dataAreas.Rows.Add(fila);
                 }
             }
             catch (Exception err)
             {
                 MessageBox.Show(this, "Ocurrio un problema al Listar :( \n\n Intentelo otra vez o comuniquelo a Sistemas.", "Mensaje: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                System.Console.WriteLine("ERROR -> presentacion -> Admi_buscarArea -> ListarAreas " + err);
+                System.Console.WriteLine("ERROR -> presentacion -> Admi_buscarCategoria -> listaCategorias " + err);
             }
         }
 
@@ -63,45 +61,27 @@ namespace presentacion
                 MessageBox.Show(this, "Debe ingresar una descripcion", "Mensaje: Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            Area area = new Area();
-            area.Descripcion = txtDescripcion.Text;
+            Categoria categoria = new Categoria();
+            categoria.Descripcion = txtDescripcion.Text;
 
             try
             {
-                if(servicio.registrarArea(area)){
+                if (servicio.registrarCategoria(categoria))
+                {
                     MessageBox.Show("Registro satisfactorio", "Mensaje: Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    listarAreas();
+                    listarCategorias();
                     btnNuevo.Text = "Nuevo";
                 }
-                    
+
                 else
                     MessageBox.Show("No se pudo completar la operacion.", "Mensaje: Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+
                 activaBotones(true, true, false, false);
             }
             catch (Exception err)
             {
                 MessageBox.Show(this, "Ocurrio un problema al registar. \n\n Intentelo otra vez o comuniquelo a Sistemas.", "Mensaje: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                System.Console.WriteLine("ERROR -> presentacion -> Admi_buscarArea -> btnGuardar  " + err);
-            }
-        }
-
-        private void dataAreas_MouseClick(object sender, MouseEventArgs e)
-        {
-            areaSeleccionada = listaDeAreas[int.Parse(dataAreas.CurrentRow.Index.ToString())];
-            txtDescripcion.Text = areaSeleccionada.Descripcion;
-            activaBotones(false, true, false, true);
-            
-        }
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            listaDeAreas = servicio.buscarArea(txtDescripcion.Text);
-            dataAreas.Rows.Clear();
-            foreach (Area area in listaDeAreas)
-            {
-                Object[] fila = { area.Descripcion };
-                dataAreas.Rows.Add(fila);
+                System.Console.WriteLine("ERROR -> presentacion -> Admi_buscarCategoria -> btnGuardar  " + err);
             }
         }
 
@@ -119,6 +99,24 @@ namespace presentacion
             }
         }
 
+        private void dataAreas_MouseClick(object sender, MouseEventArgs e)
+        {
+            categoriaSeleccionada = listaDeCategorias[int.Parse(dataAreas.CurrentRow.Index.ToString())];
+            txtDescripcion.Text = categoriaSeleccionada.Descripcion;
+            activaBotones(false, true, false, true);
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            listaDeCategorias = servicio.buscarCategoria(txtDescripcion.Text);
+            dataAreas.Rows.Clear();
+            foreach (Categoria categoria in listaDeCategorias)
+            {
+                Object[] fila = { categoria.Descripcion };
+                dataAreas.Rows.Add(fila);
+            }
+        }
+
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             if (txtDescripcion.Text == "")
@@ -127,14 +125,15 @@ namespace presentacion
                 return;
             }
 
-            areaSeleccionada.Descripcion = txtDescripcion.Text;
+            categoriaSeleccionada.Descripcion = txtDescripcion.Text;
 
-            if(servicio.actualizarArea(areaSeleccionada)){
-                listarAreas();
-                activaBotones(true,true,false,false);
+            if (servicio.actualizarCategoria(categoriaSeleccionada))
+            {
+                listarCategorias();
+                activaBotones(true, true, false, false);
                 MessageBox.Show("Actualizacion satisfactoria", "Mensaje: Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-                
+
             else
                 MessageBox.Show(this, "Ocurrio un problema al actualizar. \n\n Intentelo otra vez o comuniquelo a Sistemas.", "Mensaje: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -142,9 +141,9 @@ namespace presentacion
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (servicio.eliminarArea(areaSeleccionada))
+            if (servicio.eliminarCategoria(categoriaSeleccionada))
             {
-                listarAreas();
+                listarCategorias();
                 MessageBox.Show("Eliminacion satisfactoria", "Mensaje: Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -165,5 +164,9 @@ namespace presentacion
 
 
 
-    }// no borrar estas llaves
+
+
+
+
+    }
 }

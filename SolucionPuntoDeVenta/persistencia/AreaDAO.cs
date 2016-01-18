@@ -20,7 +20,8 @@ namespace persistencia
             con = cn;
         }
 
-        public bool registrarArea(Area area)
+
+        public bool registrar(Area area)
         {
             String sentenciaSQL = "insert into area (descripcion) values (@descripcion);";
             try
@@ -38,7 +39,7 @@ namespace persistencia
             return false;
         }
 
-        public bool actualizarArea(Area area)
+        public bool actualizar(Area area)
         {
             String sentenciaSQL = "update area set descripcion = @descripcion where id = @id; ";
             try
@@ -57,7 +58,7 @@ namespace persistencia
             return false;
         }
 
-        public bool eliminarArea(Area area)
+        public bool eliminar(Area area)
         {
             String sentenciaSQL = "update area set estado = 0 where id = @id; ";
             try
@@ -75,7 +76,7 @@ namespace persistencia
             return false;
         }
 
-        public List<Area> listaDeAreas()
+        public List<Area> listarTodo()
         {
             List<Area> listaDeAreas = new List<Area>();
             String sentenciaSQL = "select id, descripcion from area where estado = '1' ";
@@ -99,7 +100,7 @@ namespace persistencia
             }
         }
 
-        public List<Area> buscarArea(string cadena)
+        public List<Area> buscar(string cadena)
         {
             List<Area> listaDeAreas = new List<Area>();
             String sentenciaSQL = "select id, descripcion from area where estado = '1' and descripcion like '%" + cadena +"%' ";
@@ -118,7 +119,7 @@ namespace persistencia
             }
             catch (Exception err)
             {
-                System.Console.WriteLine("ERROR -> persistencia -> AreaDAO -> listarTodos " + err + "\n");
+                System.Console.WriteLine("ERROR -> persistencia -> AreaDAO -> buscar " + err + "\n");
                 throw err;
             }
         }

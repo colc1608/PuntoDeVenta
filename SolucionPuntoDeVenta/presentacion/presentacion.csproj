@@ -50,6 +50,12 @@
     <Compile Include="Admi_buscarArea.Designer.cs">
       <DependentUpon>Admi_buscarArea.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admi_buscarCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admi_buscarCategoria.Designer.cs">
+      <DependentUpon>Admi_buscarCategoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admi_Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Admi_buscarArea.resx">
       <DependentUpon>Admi_buscarArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admi_buscarCategoria.resx">
+      <DependentUpon>Admi_buscarCategoria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admi_Principal.resx">
       <DependentUpon>Admi_Principal.cs</DependentUpon>

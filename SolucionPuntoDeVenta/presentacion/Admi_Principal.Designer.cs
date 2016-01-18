@@ -35,7 +35,7 @@
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemArea = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemCategoria = new System.Windows.Forms.ToolStripMenuItem();
             this.empleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.marcaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.naturalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,7 +97,7 @@
             // 
             this.gestionarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuItemArea,
-            this.categoriaToolStripMenuItem,
+            this.MenuItemCategoria,
             this.empleadoToolStripMenuItem,
             this.marcaToolStripMenuItem,
             this.naturalToolStripMenuItem,
@@ -116,11 +116,12 @@
             this.MenuItemArea.Text = "Area";
             this.MenuItemArea.Click += new System.EventHandler(this.MenuItemArea_Click);
             // 
-            // categoriaToolStripMenuItem
+            // MenuItemCategoria
             // 
-            this.categoriaToolStripMenuItem.Name = "categoriaToolStripMenuItem";
-            this.categoriaToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.categoriaToolStripMenuItem.Text = "Categoria";
+            this.MenuItemCategoria.Name = "MenuItemCategoria";
+            this.MenuItemCategoria.Size = new System.Drawing.Size(171, 22);
+            this.MenuItemCategoria.Text = "Categoria";
+            this.MenuItemCategoria.Click += new System.EventHandler(this.MenuItemCategoria_Click);
             // 
             // empleadoToolStripMenuItem
             // 
@@ -218,7 +219,7 @@
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MenuItemArea;
-        private System.Windows.Forms.ToolStripMenuItem categoriaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuItemCategoria;
         private System.Windows.Forms.ToolStripMenuItem empleadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem marcaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem naturalToolStripMenuItem;

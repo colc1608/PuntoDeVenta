@@ -26,7 +26,7 @@ namespace servicio
         {
             bool exito;
             con.abrirConexion();
-            exito = dao.registrarArea(area);
+            exito = dao.registrar(area);
             con.cerrarConexion();
             return exito;
         }
@@ -35,7 +35,7 @@ namespace servicio
         {
             bool exito;
             con.abrirConexion();
-            exito = dao.actualizarArea(area);
+            exito = dao.actualizar(area);
             con.cerrarConexion();
             return exito;
         }
@@ -44,7 +44,7 @@ namespace servicio
         {
             bool exito;
             con.abrirConexion();
-            exito = dao.eliminarArea(area);
+            exito = dao.eliminar(area);
             con.cerrarConexion();
             return exito;
         }
@@ -53,7 +53,7 @@ namespace servicio
         {
             List<Area> listaDeAreas;
             con.abrirConexion();
-            listaDeAreas = dao.listaDeAreas();
+            listaDeAreas = dao.listarTodo();
             con.cerrarConexion();
             return listaDeAreas;
         }
@@ -63,7 +63,7 @@ namespace servicio
         {
             List<Area> listaDeAreas;
             con.abrirConexion();
-            listaDeAreas = dao.buscarArea(cadena);
+            listaDeAreas = dao.buscar(cadena);
             con.cerrarConexion();
             return listaDeAreas;
         }

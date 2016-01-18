@@ -12,6 +12,7 @@ namespace dominio
         private String descripcion;
         private String estado;
 
+        
 
 
         public int Id
